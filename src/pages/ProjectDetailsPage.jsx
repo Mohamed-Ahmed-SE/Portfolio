@@ -135,7 +135,7 @@ const ProjectDetailsPage = () => {
             <ProjectPerformance performance={project.performance} />
 
             {/* Description / Challenge / Solution */}
-            <section className="px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-16 mb-40">
+            <section className="px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-40">
                 <div className="lg:col-span-4 reveal-text">
                     <h3 className="text-sm uppercase tracking-widest opacity-50 mb-6">The Overview</h3>
                     <p className="text-lg font-light leading-relaxed text-black/80">

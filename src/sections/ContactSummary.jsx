@@ -25,7 +25,7 @@ const ContactSummary = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "center center",
-        end: "+=800 center",
+        end: "+=50 center",
         scrub: 0.5,
         pin: true,
         pinSpacing: true,

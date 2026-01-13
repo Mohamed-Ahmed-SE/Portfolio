@@ -156,8 +156,8 @@ const ProjectsPage = () => {
                         key={filter}
                         onClick={() => setActiveFilter(filter)}
                         className={`px-6 py-2 rounded-full border border-black transition-all duration-300 ${activeFilter === filter
-                                ? "bg-black text-white"
-                                : "bg-transparent text-black hover:bg-black/5"
+                            ? "bg-black text-white"
+                            : "bg-transparent text-black hover:bg-black/5"
                             }`}
                     >
                         {filter}
@@ -170,7 +170,7 @@ const ProjectsPage = () => {
                     <div
                         key={project.id}
                         id="project-item"
-                        className="relative flex flex-col gap-1 py-10 cursor-pointer group md:gap-0 border-b border-black/10 transition-colors duration-300"
+                        className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
                         onMouseEnter={() => handleMouseEnter(index)}
                         onMouseLeave={() => handleMouseLeave(index)}
                         onClick={() => handleProjectClick(project.slug)}
@@ -180,33 +180,30 @@ const ProjectsPage = () => {
                             ref={(el) => {
                                 overlayRefs.current[index] = el;
                             }}
-                            className="absolute inset-0 hidden md:block bg-black -z-10 pointer-events-none"
+                            className="absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path"
                             style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" }}
                         />
 
-                        {/* title & logic */}
-                        <div className="flex flex-col md:flex-row justify-between items-baseline px-10 text-black transition-all duration-500 md:group-hover:px-14 md:group-hover:text-white">
-                            <div className="flex items-center gap-6">
-                                <span className="text-sm font-mono opacity-50 hidden md:block">0{index + 1}</span>
-                                <h2 className="lg:text-[60px] text-[32px] leading-none uppercase tracking-tighter">
-                                    {project.name}
-                                </h2>
-                            </div>
-                            <div className="flex items-center gap-4 mt-4 md:mt-0">
-                                <span className="text-sm uppercase tracking-widest opacity-60 md:group-hover:opacity-100">{project.client}</span>
-                                <Icon icon="lucide:arrow-up-right" className="md:size-8 size-6" />
-                            </div>
+                        {/* title */}
+                        <div className="flex justify-between px-6 md:px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
+                            <h2 className="lg:text-[32px] text-[26px] leading-none">
+                                {project.name}
+                            </h2>
+                            <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
                         </div>
-
-                        {/* framework tags */}
-                        <div className="flex px-10 md:px-14 mt-4 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 text-black/60 md:group-hover:text-white/60">
+                        {/* divider */}
+                        <div className="w-full h-0.5 bg-black/80 my-2 md:my-0" />
+                        {/* framework */}
+                        <div className="flex px-6 md:px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12 text-black/60 md:group-hover:text-white/80">
                             {project.frameworks.map((framework) => (
-                                <p key={framework.id}>{framework.name}</p>
+                                <p key={framework.id} className="transition-colors duration-500 md:group-hover:text-white">
+                                    {framework.name}
+                                </p>
                             ))}
                         </div>
 
                         {/* mobile preview */}
-                        <div className="relative flex items-center justify-center px-10 md:hidden h-[300px] mt-6">
+                        <div className="relative flex items-center justify-center px-6 md:px-10 md:hidden aspect-video mt-4">
                             <img
                                 src={project.image}
                                 alt={`${project.name}-preview`}
@@ -219,7 +216,7 @@ const ProjectsPage = () => {
                 {/* Floating preview */}
                 <div
                     ref={previewRef}
-                    className="fixed top-0 left-0 z-50 overflow-hidden pointer-events-none w-[400px] h-[300px] hidden md:block opacity-0 rounded-lg shadow-2xl"
+                    className="fixed top-0 left-0 z-50 overflow-hidden pointer-events-none w-[600px] h-[400px] hidden md:block opacity-0 rounded-lg shadow-2xl border-4 border-black bg-white"
                     style={{ transform: "translate(-50%, -50%)" }}
                 >
                     {currentIndex !== null && filteredProjects[currentIndex] && (
@@ -230,6 +227,13 @@ const ProjectsPage = () => {
                         />
                     )}
                 </div>
+            </div>
+
+            {/* Hidden Preloader */}
+            <div className="hidden">
+                {projects.map((p) => (
+                    <img key={p.id} src={p.image} alt="preload" />
+                ))}
             </div>
 
             {/* MARQUEE */}

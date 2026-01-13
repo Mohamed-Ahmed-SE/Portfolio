@@ -180,6 +180,13 @@ const Works = () => {
           )}
         </div>
       </div>
+
+      {/* Hidden Preloader */}
+      <div className="hidden">
+        {projects.map((p) => (
+          <img key={p.id} src={p.image} alt="preload" />
+        ))}
+      </div>
     </section>
   );
 };
