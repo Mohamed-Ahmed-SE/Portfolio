@@ -22,6 +22,8 @@ results driven webs/apps`;
       >
         <Canvas
           shadows
+          dpr={[1, 1.5]}
+          gl={{ antialias: false }}
           camera={{ position: [0, 0, -10], fov: 17.5, near: 1, far: 20 }}
         >
           <ambientLight intensity={0.5} />

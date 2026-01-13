@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
-import Home from "./pages/Home";
-import AboutPage from "./pages/AboutPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ProjectDetailsPage from "./pages/ProjectDetailsPage";
-import ContactPage from "./pages/ContactPage";
 import BackToTop from "./components/BackToTop";
+
+const Home = lazy(() => import("./pages/Home"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ProjectDetailsPage = lazy(() => import("./pages/ProjectDetailsPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,13 +41,19 @@ const App = () => {
       <BrowserRouter>
         <ScrollToTop />
         <BackToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+        <Suspense fallback={
+          <div className="fixed inset-0 bg-black z-50 flex items-center justify-center text-white">
+            <div className="animate-pulse">Loading...</div>
+          </div>
+        }>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </ReactLenis>
   );
