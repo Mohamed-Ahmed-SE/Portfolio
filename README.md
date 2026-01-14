@@ -46,6 +46,29 @@ The architecture is component-driven and highly scalable, featuring a dedicated 
 - **[React Three Fiber](https://docs.pmnd.rs/react-three-fiber)**: React renderer for Three.js.
 - **[React Three Drei](https://github.com/pmndrs/drei)**: Useful helpers for react-three-fiber.
 
+## 🚀 Performance & Mobile Optimizations (v2.1)
+
+A major overhaul was conducted to ensure the site performs flawlessly on mobile devices and slower networks.
+
+### 📱 Mobile Responsiveness
+-   **Typography Scaling**: Implemented fluid scaling for large headers (`banner-text-responsive`) to prevent overflow on small screens.
+-   **Touch Optimization**: Adjusted touch targets for navigation and interactive elements.
+-   **Layout reflows**:
+    -   **Navbar**: Optimized burger menu positioning and touch areas.
+    -   **Projects**: Switched mobile previews to `aspect-video` for better vertical flow.
+    -   **Grids**: Reduced grid gaps on mobile (e.g., in Project Details) to improve content density.
+
+### ⚡ Performance Tuning
+-   **Code Splitting**: Implemented `React.lazy` and `Suspense` for all top-level routes to reduce initial bundle size.
+-   **Manual Chunking**: Configured Vite/Rollup to split large vendor libraries (`three`, `gsap`) into separate cacheable chunks.
+-   **3D Optimization**: Capped `dpr` (Device Pixel Ratio) on the Hero Canvas to `[1, 1.5]` to prevent GPU overheating on high-density mobile screens.
+-   **Image Preloading**: Implemented a "Hidden Preloader" strategy for project hover images. Use of `display: hidden` divs ensures images are cached on load, enabling **instant 0ms hover interactions** without layout thrashing or visibility glitches.
+
+### 🔄 UX Refinements
+-   **Marquee Loop**: Refactored `ClientMarquee` to use a multi-set replication strategy (4x), ensuring a seamless infinite loop on even the widest 4k monitors.
+-   **Scroll Pinning**: Tuned ScrollTrigger pinning durations in `ContactSummary` to ensure the user isn't stuck scrolling for too long.
+-   **Project List**: Redesigned the "All Projects" page to match the premium "Works" list style from the specific home section.
+
 ## 🎞️ Animation Strategy
 
 This portfolio heavily relies on **GSAP (GreenSock Animation Platform)** to create a fluid and engaging user experience.
