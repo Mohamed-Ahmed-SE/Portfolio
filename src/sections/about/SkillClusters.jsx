@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Icon } from "@iconify/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const activeSkills = [
     { category: "Frontend", items: ["React", "Next.js", "Vue", "Svelte", "TypeScript"] },
@@ -14,25 +16,29 @@ const SkillClusters = () => {
     const containerRef = useRef(null);
 
     useGSAP(() => {
-        gsap.from(".skill-chip", {
-            scale: 0,
-            opacity: 0,
-            duration: 0.5,
-            stagger: {
-                amount: 1,
-                grid: "auto",
-                from: "center"
-            },
-            ease: "back.out(1.7)",
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top 75%",
+        gsap.fromTo(".skill-chip",
+            { scale: 0, opacity: 0 },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 0.5,
+                stagger: {
+                    amount: 1,
+                    grid: "auto",
+                    from: "center"
+                },
+                ease: "back.out(1.7)",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
             }
-        });
+        );
     }, []);
 
     return (
-        <section ref={containerRef} className="py-20 px-6 md:px-10 bg-zinc-50">
+        <section ref={containerRef} className="py-20 px-6 md:px-10 bg-zinc-50 text-black">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 {activeSkills.map((cluster, idx) => (
                     <div key={idx} className="flex flex-col gap-6">
