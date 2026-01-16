@@ -109,6 +109,31 @@ This version introduces a complete typographic overhaul and normalizes scroll be
 -   **Services List**: Removed `sticky` positioning and stacking card effects. The list now flows naturally.
 -   **ContactSummary**: Removed "Scroll Pinning" (`pin: true`), ensuring the section does not lock the viewport and scrolls fluidly with the document flow.
 
+## 🎨 v2.4: Projects Page Redesign (Ultra-Clean Editorial)
+
+A radical "V5" transformation of the Projects/Work page was executed to shift from a standard portfolio layout to a high-end, editorial design language (Swiss Style). The focus is on clarity, impact, and minimal visual noise.
+
+### 💎 "Ultra-Clean" Design (V5)
+-   **Structure**: Abandoned complex scroll-jacking and asymmetrical layouts in favor of a timeless **2-Column Editorial Grid**.
+-   **Typography**: Implemented massive, static, bold typography ("SELECTED WORKS") for the Hero section, removing kinetic distractions.
+-   **Theme**: Unified the entire page under a cohesive **White & Black** palette, removing dark mode gradients for a sharper, cleaner look.
+
+### 🌟 New Components
+-   **`ProjectHero.jsx`**: A stark, confident opening statement with perfectly tracked typography.
+-   **`ProjectList.jsx` ("The Interactive Index")**:
+    -   **Visuals**: Large 4:3 aspect ratio images in a clean grid.
+    -   **Micro-Interaction**: Advanced hover states where images shift from grayscale to full color, and titles slide up to reveal secondary information.
+    -   **Floating UI**: A "View Case" button appearing on hover.
+-   **`CategoryNav.jsx`**: Replaced text links with modern, app-like pill buttons (`rounded-full`) for better tactile interaction.
+-   **`ProjectImpact.jsx`**: Replaced standard "Awards Lists" with a **"Metrics & Impact"** section, focusing on real-world results (Users Reached, Revenue) + Press Logos (Forbes, TechCrunch).
+-   **`ProjectManifesto.jsx`**: A Swiss-style typographic statement using grid alignment.
+-   **`ProjectCTA.jsx`**: A magnetic "Let's Build" footer with an updated **Beige Hover State** to match the new organic aesthetic.
+
+### 🔧 Visual Polish
+-   **Navigation**: Sleek, sticky pill navigation for filtering projects.
+-   **Services**: Updated `ProjectServices` to match the light theme (White/Gray/Black).
+-   **Noise**: Reduced background noise grain to `0.02` opacity for a subtle, paper-like texture without the "messy" digital grain look.
+
 ## 🎞️ Animation Strategy
 
 This portfolio heavily relies on **GSAP (GreenSock Animation Platform)** to create a fluid and engaging user experience.
