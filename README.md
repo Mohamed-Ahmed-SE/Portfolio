@@ -69,6 +69,46 @@ A major overhaul was conducted to ensure the site performs flawlessly on mobile 
 -   **Scroll Pinning**: Tuned ScrollTrigger pinning durations in `ContactSummary` to ensure the user isn't stuck scrolling for too long.
 -   **Project List**: Redesigned the "All Projects" page to match the premium "Works" list style from the specific home section.
 
+## 🎨 v2.2: The About Page Overhaul & Visual Polish
+
+A comprehensive redesign of the `AboutPage` was executed to elevate the storytelling and visual impact of the personal brand.
+
+### ✨ New "Philosophy" Section (Editorial Layout)
+-   **Split-Screen Design**: Moved away from generic centered text to a modern, editorial 2-column layout.
+-   **Visual storytelling**: Features a dedicated, full-height abstract visual (`creative-abstract.png`) on the left.
+-   **Typography**: Implemented crisp, left-aligned typography with a clear hierarchy ("Ethos" label, "Digital Craftsmanship" headline) for better readability and professional appeal.
+-   **Animation**: Custom GSAP timeline with `clip-path` image reveal and staggered text entry.
+
+### 🛠 Visibility & Stability Fixes
+-   **Robust Animations**: Addressed critical visibility bugs where sections (`Values`, `Skills`, `Workflow`) would remain invisible. Refactored animations from `gsap.from()` to `gsap.fromTo()` with simplified triggers (`start: "top bottom"`), guaranteeing elements always render correctly regardless of scroll speed.
+-   **Contrast**: Fixed "white-on-white" text issues by enforcing strictly typed backgrounds (`bg-black`, `bg-zinc-900`) and text colors across all new sections.
+
+### 🧩 New Components
+-   **`AboutHero.jsx`**: A dedicated hero with parallax image effects (`about-hero.png`) and updated personal bio.
+-   **`ValuesCollaboration.jsx`**: A grid of "Core Values" cards using Glassmorphism (`backdrop-blur-xl`, `bg-white/5`) and vivid hover states.
+-   **`SkillClusters.jsx`**: An interactive, categorized display of the technical stack (Frontend, Creative, Design, Backend).
+-   **`ToolsWorkflow.jsx`**: A dark-themed visualization of the development pipeline (Discovery → Launch) with connecting lines and iconography.
+
+### 👤 Personal Rebranding
+-   Updated all bio content to reflect the current role: **UI/UX Designer & MERN Stack Developer**.
+-   Education details updated: **2nd Year CS Student at Elshrouq Academy**.
+-   Consistent tone of voice across `Hero` and `About` pages.
+
+## ✒️ v2.3: Typography & Scroll Mechanics Refinement
+
+This version introduces a complete typographic overhaul and normalizes scroll behaviors on the Home page based on user feedback.
+
+### 🅰️ Typography Upgrade
+-   **Replaced** `Amiamie` (System/Local font) with a premium **Google Fonts** pairing:
+    -   **Headings**: `Syne` (Bold, Wide Grotesque) for distinct, high-impact titles.
+    -   **Body**: `Inter` (Sans Serif) for maximum readability and modern aesthetics.
+-   **Global Integration**: Applied via usage of standard CSS variables (`--font-display`, `--font-sans`) in `index.css`.
+
+### 🖱️ Scroll Mechanics (Home Page)
+-   **ServiceSummary**: Removed horizontal scrolling/parallax effects. The section now scrolls vertically and linearly.
+-   **Services List**: Removed `sticky` positioning and stacking card effects. The list now flows naturally.
+-   **ContactSummary**: Removed "Scroll Pinning" (`pin: true`), ensuring the section does not lock the viewport and scrolls fluidly with the document flow.
+
 ## 🎞️ Animation Strategy
 
 This portfolio heavily relies on **GSAP (GreenSock Animation Platform)** to create a fluid and engaging user experience.
