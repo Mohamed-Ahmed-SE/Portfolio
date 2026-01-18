@@ -30,8 +30,8 @@ const ProjectCTA = () => {
                 </h2>
 
                 <div ref={circleRef} className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-black text-white flex items-center justify-center cursor-pointer group relative overflow-hidden">
-                    <div className="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out rounded-full" />
-                    <span className="relative z-10 text-xl font-bold uppercase tracking-widest group-hover:scale-110 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-[#C6A665] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out rounded-full" />
+                    <span className="relative z-10 text-xl font-bold uppercase tracking-widest group-hover:scale-110 transition-transform duration-300 group-hover:text-black">
                         Start Now
                     </span>
                 </div>

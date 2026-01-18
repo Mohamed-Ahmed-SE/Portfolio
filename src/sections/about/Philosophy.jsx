@@ -2,81 +2,81 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Icon } from "@iconify/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const quote = "Code is not just functionality; it's a medium for expression. In a digital world cluttered with noise, I strive to create experiences that are clear, intuitive, and profoundly human.";
-
 const Philosophy = () => {
-    const sectionRef = useRef(null);
-    const imageRef = useRef(null);
+    const containerRef = useRef(null);
     const textRef = useRef(null);
 
     useGSAP(() => {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 70%",
-                toggleActions: "play none none reverse"
-            }
-        });
+        const text = textRef.current;
+        const words = text.querySelectorAll(".word");
 
-        // Reveal image
-        tl.from(imageRef.current, {
-            clipPath: "inset(0 100% 0 0)",
-            duration: 1.5,
-            ease: "power4.out"
-        })
-            // Reveal text content
-            .from(textRef.current.children, {
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: "power2.out"
-            }, "-=1");
+        gsap.fromTo(words,
+            { y: 50, opacity: 0, filter: "blur(10px)" },
+            {
+                y: 0,
+                opacity: 1,
+                filter: "blur(0px)",
+                stagger: 0.05,
+                duration: 1,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 75%",
+                }
+            }
+        );
+
+        gsap.fromTo(".divider-line",
+            { scaleX: 0 },
+            {
+                scaleX: 1,
+                duration: 1.5,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 75%",
+                }
+            }
+        );
 
     }, []);
 
     return (
-        <section ref={sectionRef} className="bg-black min-h-screen flex flex-col md:flex-row overflow-hidden relative">
+        <section ref={containerRef} className="py-40 px-6 md:px-10 bg-black text-white relative flex flex-col items-center text-center">
 
-            {/* Left Column: Visual */}
-            <div className="w-full md:w-1/2 h-[50vh] md:h-auto relative">
-                <div ref={imageRef} className="absolute inset-0 w-full h-full">
-                    <img
-                        src="/images/creative-abstract.png"
-                        alt="Digital Art"
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/20" /> {/* Slight overlay */}
-                </div>
-            </div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 blur-[150px] rounded-full pointer-events-none" />
 
-            {/* Right Column: Content */}
-            <div className="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 lg:p-32 bg-zinc-900 border-l border-white/5">
-                <div ref={textRef} className="max-w-xl">
-                    <span className="inline-block text-purple-400 uppercase tracking-[0.2em] text-xs font-bold mb-8">
-                        Our Ethos
-                    </span>
+            <div className="relative z-10 max-w-4xl mx-auto">
+                <Icon icon="lucide:quote" className="text-4xl md:text-6xl text-[#C6A665] mx-auto mb-10 opacity-50" />
 
-                    <h2 className="text-3xl md:text-5xl font-light text-white mb-10 leading-tight">
-                        Digital <br /> <span className="font-serif italic text-white/50">Craftsmanship</span>
-                    </h2>
+                <h2 ref={textRef} className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium leading-[1.2] tracking-tight">
+                    <span className="word inline-block">Code</span> <span className="word inline-block">is</span> <span className="word inline-block">my</span> <span className="word inline-block text-[#C6A665]">canvas.</span> <br />
+                    <span className="word inline-block">I</span> <span className="word inline-block">don't</span> <span className="word inline-block">just</span> <span className="word inline-block">build</span> <span className="word inline-block">websites;</span> <br />
+                    <span className="word inline-block">I</span> <span className="word inline-block">craft</span> <span className="word inline-block italic font-serif">digital</span> <span className="word inline-block italic font-serif">experiences</span> <br />
+                    <span className="word inline-block">that</span> <span className="word inline-block">live,</span> <span className="word inline-block">breathe,</span> <span className="word inline-block">and</span> <span className="word inline-block">inspire.</span>
+                </h2>
 
-                    <p className="text-lg md:text-xl text-zinc-400 leading-relaxed font-light mb-12">
-                        {quote}
-                    </p>
+                <div className="divider-line w-24 h-1 bg-[#C6A665] mx-auto mt-16 mb-16 origin-center" />
 
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-[1px] bg-white/20" />
-                        <span className="text-white/40 text-sm uppercase tracking-widest">
-                            Est. 2024
-                        </span>
+                <div className="flex flex-col md:flex-row justify-center gap-10 md:gap-20 text-white/50 text-sm md:text-base font-mono uppercase tracking-widest">
+                    <div className="flex items-center gap-3">
+                        <Icon icon="lucide:zap" />
+                        <span>Performance First</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <Icon icon="lucide:scan-face" />
+                        <span>User Centric</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <Icon icon="lucide:infinity" />
+                        <span>Limitless Design</span>
                     </div>
                 </div>
             </div>
-
         </section>
     );
 };

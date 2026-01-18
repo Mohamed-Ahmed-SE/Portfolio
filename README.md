@@ -134,7 +134,34 @@ A radical "V5" transformation of the Projects/Work page was executed to shift fr
 -   **Services**: Updated `ProjectServices` to match the light theme (White/Gray/Black).
 -   **Noise**: Reduced background noise grain to `0.02` opacity for a subtle, paper-like texture without the "messy" digital grain look.
 
-## 🎞️ Animation Strategy
+
+## 🚀 v2.5: The Performance & Polish Update
+
+This substantial update focused on rendering performance, mobile usability, and a complete content overhaul of the "About" and "Home" sections to better reflect a full-stack skillset.
+
+### 📜 Certifications & Credentials
+-   **Dedicated Page**: Built a new dynamic route `/certifications` to house a complete library of professional certificates.
+-   **Data-Driven**: Powered by a new `certification.json` schema, allowing for easy updates.
+-   **Visuals**: Certificates now feature high-quality preview images with "async" decoding for performance.
+
+### ⚡ Performance Architecture
+-   **Skeleton Loading System**: Replaced generic "Loading" text with a sophisticated `PageSkeleton` system. These skeletons (Navbar, Hero, Content) provide an instant perceived load time while heavy 3D assets fetch in the background.
+-   **Image Optimization**:
+    -   Implemented `loading="lazy"` and `decoding="async"` across all `ProjectCard` and `Certifications` components.
+    -   Reduced Main Thread blocking time by offloading image decoding.
+-   **Codebase Cleanup**: Removed legacy data files and unused exports to reduce bundle size.
+
+### 🎨 Mobile & UI Refinements
+-   **Journey Section (Desktop)**: Redesigned the "My Journey" timeline into a **Premium Minimalist Row Layout**. It now features hover interactions, improved whitespace, and a cleaner editorial look.
+-   **Mobile "Core Principles"**: Fixed usability issues on touch devices by removing hover-dependency. Content in the "Values" section is now visible by default on mobile/tablet.
+-   **Home Project Mobile View**: Deep refactor of the `Works` mobile card. Replaced broken background layers with a clean, high-fidelity aspect-ratio image card.
+-   **Tech Stack**:
+    -   Replaced WebGL with **Spline** to better represent 3D design capabilities.
+    -   Fixed visibility issues for dark-mode icons (iOS, Three.js, Framer) by implementing theme-aware icon variants.
+
+### 🏠 Home Page Strategy
+-   **Service Pillars**: Updated the "Services" section to clearly define the four core pillars: **Frontend Development, Backend Systems, UI/UX Design, and Mobile Applications**.
+
 
 This portfolio heavily relies on **GSAP (GreenSock Animation Platform)** to create a fluid and engaging user experience.
 

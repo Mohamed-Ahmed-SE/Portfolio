@@ -2,12 +2,14 @@ import React, { useEffect, useState, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ReactLenis } from "lenis/react";
 import BackToTop from "./components/BackToTop";
+import PageSkeleton from "./components/skeletons/PageSkeleton";
 
 const Home = lazy(() => import("./pages/Home"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 const ProjectDetailsPage = lazy(() => import("./pages/ProjectDetailsPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
+const CertificationsPage = lazy(() => import("./pages/CertificationsPage"));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -29,11 +31,7 @@ const App = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="fixed inset-0 bg-black z-[100] flex items-center justify-center text-white">
-        <div className="animate-pulse tracking-widest uppercase">Loading</div>
-      </div>
-    )
+    return <PageSkeleton />;
   }
 
   return (
@@ -41,17 +39,14 @@ const App = () => {
       <BrowserRouter>
         <ScrollToTop />
         <BackToTop />
-        <Suspense fallback={
-          <div className="fixed inset-0 bg-black z-50 flex items-center justify-center text-white">
-            <div className="animate-pulse">Loading...</div>
-          </div>
-        }>
+        <Suspense fallback={<PageSkeleton />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/certifications" element={<CertificationsPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

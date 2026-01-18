@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "MERN Stack Specialist",
+        "issuer": "Tech Academy",
+        "date": "2024",
+        "icon": "mdi:certificate-outline",
+        "color": "#10b981",
+        "image": "/src/assets/certifications/mern-cert.jpg",
+        "description": "Comprehensive mastery of MongoDB, Express, React, and Node.js for building scalable full-stack applications."
+    },
+    {
+        "id": 2,
+        "title": "Google UX Design",
+        "issuer": "Coursera",
+        "date": "2023",
+        "icon": "logos:google-icon",
+        "color": "#4285F4",
+        "image": "/src/assets/certifications/google-ux-cert.jpg",
+        "description": "Professional certificate covering the foundations of UX design, including empathizing with users, defining pain points, ideating solutions, creating wireframes, and prototypes."
+    },
+    {
+        "id": 3,
+        "title": "Flutter Development",
+        "issuer": "Udemy",
+        "date": "2024",
+        "icon": "logos:flutter",
+        "color": "#02569B",
+        "image": "/src/assets/certifications/flutter-cert.jpg",
+        "description": "In-depth course on building native Android and iOS apps using Flutter framework and Dart programming language."
+    },
+    {
+        "id": 4,
+        "title": "Advanced React Patterns",
+        "issuer": "Frontend Masters",
+        "date": "2023",
+        "icon": "logos:react",
+        "color": "#61DAFB",
+        "image": "/src/assets/certifications/react-cert.jpg",
+        "description": "Deep dive into advanced React concepts like HOCs, Render Props, Custom Hooks, and Context API."
+    },
+    {
+        "id": 5,
+        "title": "Three.js Journey",
+        "issuer": "Bruno Simon",
+        "date": "2023",
+        "icon": "logos:threejs",
+        "color": "#000000",
+        "image": "/src/assets/certifications/threejs-cert.jpg",
+        "description": "The ultimate guide to creating immersive 3D websites with Three.js and WebGL."
+    },
+    {
+        "id": 6,
+        "title": "Git & GitHub Mastery",
+        "issuer": "Udemy",
+        "date": "2022",
+        "icon": "logos:git-icon",
+        "color": "#F05032",
+        "image": "/src/assets/certifications/git-cert.jpg",
+        "description": "Complete version control mastery for efficient team collaboration and code management."
+    }
+]

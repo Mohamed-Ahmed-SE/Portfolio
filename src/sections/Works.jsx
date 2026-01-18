@@ -152,17 +152,15 @@ const Works = () => {
               ))}
             </div>
             {/* mobile preview image */}
-            <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
-              <img
-                src={project.bgImage}
-                alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
-              />
-              <img
-                src={project.image}
-                alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl"
-              />
+            <div className="relative w-full px-10 md:hidden mt-6 mb-10">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black/5 border border-black/5">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  loading="lazy"
+                  className="object-cover w-full h-full"
+                />
+              </div>
             </div>
           </div>
         ))}
