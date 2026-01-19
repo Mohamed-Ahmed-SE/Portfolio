@@ -1,9 +1,9 @@
 [
     {
         "id": 1,
-        "title": "MERN Stack Specialist",
-        "issuer": "Tech Academy",
-        "date": "2024",
+        "title": "MERN Stack",
+        "issuer": "SEF Academy",
+        "date": "2025",
         "icon": "mdi:certificate-outline",
         "color": "#10b981",
         "image": "/assets/certifications/mern-cert.jpg",
@@ -11,9 +11,9 @@
     },
     {
         "id": 2,
-        "title": "Google UX Design",
-        "issuer": "Coursera",
-        "date": "2023",
+        "title": "Front-End Development",
+        "issuer": "SEF Academy",
+        "date": "2025",
         "icon": "logos:google-icon",
         "color": "#4285F4",
         "image": "/assets/certifications/google-ux-cert.jpg",
@@ -22,8 +22,8 @@
     {
         "id": 3,
         "title": "Flutter Development",
-        "issuer": "Udemy",
-        "date": "2024",
+        "issuer": "Easy Learn Academy",
+        "date": "2026",
         "icon": "logos:flutter",
         "color": "#02569B",
         "image": "/assets/certifications/flutter-cert.jpg",
@@ -31,9 +31,9 @@
     },
     {
         "id": 4,
-        "title": "Advanced React Patterns",
-        "issuer": "Frontend Masters",
-        "date": "2023",
+        "title": "Backend Development",
+        "issuer": "SEF Academy",
+        "date": "2025",
         "icon": "logos:react",
         "color": "#61DAFB",
         "image": "/assets/certifications/react-cert.jpg",
@@ -41,22 +41,12 @@
     },
     {
         "id": 5,
-        "title": "Three.js Journey",
-        "issuer": "Bruno Simon",
-        "date": "2023",
+        "title": "UI/UX Design",
+        "issuer": "Arabian Academy",
+        "date": "2025",
         "icon": "logos:threejs",
         "color": "#000000",
         "image": "/assets/certifications/threejs-cert.jpg",
         "description": "The ultimate guide to creating immersive 3D websites with Three.js and WebGL."
-    },
-    {
-        "id": 6,
-        "title": "Git & GitHub Mastery",
-        "issuer": "Udemy",
-        "date": "2022",
-        "icon": "logos:git-icon",
-        "color": "#F05032",
-        "image": "/assets/certifications/git-cert.jpg",
-        "description": "Complete version control mastery for efficient team collaboration and code management."
     }
 ]
