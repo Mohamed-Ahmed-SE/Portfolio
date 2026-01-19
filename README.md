@@ -172,6 +172,28 @@ This portfolio heavily relies on **GSAP (GreenSock Animation Platform)** to crea
 -   **Staggered Animations**: Lists (Skills, Experience, Awards) appear in elegant sequences.
 -   **Clip-Path Reveals**: "Curtain" effects for images and section transitions.
 
+## 🚀 v2.6: Responsiveness, Performance & Aesthetic Polish
+
+This update focuses on unifying the design language across all pages, ensuring pixel-perfect responsiveness, and optimizing interaction performance.
+
+### 📱 Contact Page Overhaul
+-   **Split Layout Design**: reimagined the `ContactPage` with a premium desktop split-view. Contact details (Email, Phone, Socials) now side-by-side with the form.
+-   **Typography**: Implemented massive, kinetic typography in `ContactHero` ("Let's start something new") for immediate visual impact.
+-   **UX Improvements**: integrated specific location/time data and social links directly into the main view, removing the need for a separate footer.
+
+### ⚡ Home Screen Optimization
+-   **Zero-State Hover**: Refactored `Works.jsx` to eliminate React state updates during mouse movement.
+-   **Direct DOM Manipulation**: Switched to GSAP-driven opacity/scale transforms for project previews, resulting in 60fps performance without re-renders.
+
+### 🎨 Project Cards Standardization
+-   **Unified Design**: Updated the main `ProjectsPage` list to strictly match the "Recommended Projects" card style (Fixed height, no grayscale).
+-   **Interactive Typography**: Restored the "Sliding Text" hover effect where the title duplicates and scrolls up, combining clean aesthetics with dynamic motion.
+-   **Alignment**: Fixed global alignment issues, ensuring all titles, metrics using `ProjectImpact`, and filters are strictly left-aligned for a Swiss-grid feel.
+
+### 🛠 Asset & Data Management
+-   **Certification Fixes**: Resolved broken image paths by correctly structuring assets in the `public` directory.
+-   **New Content**: Added "Eclipse Jewelry" as a flagship project with custom dark-mode assets.
+
 ## 📦 Installation
 
 To get this project running on your local machine, follow these steps:
