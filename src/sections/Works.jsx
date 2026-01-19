@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { projectData as projects } from "../constants/projectData";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 const Works = () => {
   const overlayRefs = useRef([]);
   const previewRef = useRef(null);
+  const previewImagesRef = useRef([]); // Refs for all potential preview images
   const navigate = useNavigate();
 
-  const [currentIndex, setCurrentIndex] = useState(null);
   const text = `Featured projects that have been meticulously
     crafted with passion to drive
     results and impact.`;
@@ -20,7 +20,12 @@ const Works = () => {
   const moveX = useRef(null);
   const moveY = useRef(null);
 
+  // Constants
+  const DISPLAY_COUNT = 6;
+  const visibleProjects = projects.slice(0, DISPLAY_COUNT);
+
   useGSAP(() => {
+    // QuickTo setup for cursor following
     moveX.current = gsap.quickTo(previewRef.current, "x", {
       duration: 1.5,
       ease: "power3.out",
@@ -30,6 +35,7 @@ const Works = () => {
       ease: "power3.out",
     });
 
+    // Initial animation for list items
     gsap.from("#project", {
       y: 100,
       opacity: 0,
@@ -45,60 +51,81 @@ const Works = () => {
 
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
-    setCurrentIndex(index);
 
+    // 1. Animate specific list item overlay
     const el = overlayRefs.current[index];
-    if (!el) return;
+    if (el) {
+      gsap.killTweensOf(el);
+      gsap.fromTo(
+        el,
+        {
+          clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+        },
+        {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+          duration: 0.15,
+          ease: "power2.out",
+        }
+      );
+    }
 
-    gsap.killTweensOf(el);
-    gsap.fromTo(
-      el,
-      {
-        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      },
-      {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        duration: 0.15,
-        ease: "power2.out",
-      }
-    );
-
+    // 2. Animate global preview container visibility
     gsap.to(previewRef.current, {
       opacity: 1,
       scale: 1,
       duration: 0.3,
       ease: "power2.out",
     });
+
+    // 3. Reveal the SPECIFIC image for this project
+    const imgEl = previewImagesRef.current[index];
+    if (imgEl) {
+      // Ensure all other images are hidden immediately or fade out quickly?
+      // For responsiveness, just setting opacity works best.
+      // We loop through all to reset others and show current one.
+      previewImagesRef.current.forEach((img, i) => {
+        if (!img) return;
+        if (i === index) {
+          gsap.to(img, { opacity: 1, duration: 0, overwrite: true }); // Instant switch or fast fade? Instant avoids ghosting.
+        } else {
+          gsap.set(img, { opacity: 0 }); // Hide others instantly
+        }
+      });
+    }
   };
 
   const handleMouseLeave = (index) => {
     if (window.innerWidth < 768) return;
-    setCurrentIndex(null);
 
+    // 1. Reset list item overlay
     const el = overlayRefs.current[index];
-    if (!el) return;
+    if (el) {
+      gsap.killTweensOf(el);
+      gsap.to(el, {
+        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+        duration: 0.2,
+        ease: "power2.in",
+      });
+    }
 
-    gsap.killTweensOf(el);
-    gsap.to(el, {
-      clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      duration: 0.2,
-      ease: "power2.in",
-    });
-
+    // 2. Hide global preview container
     gsap.to(previewRef.current, {
       opacity: 0,
       scale: 0.95,
       duration: 0.3,
       ease: "power2.out",
     });
+
+    // Note: We don't necessarily need to hide the specific image inside here, 
+    // as the parent container fades out.
   };
 
   const handleMouseMove = (e) => {
     if (window.innerWidth < 768) return;
     mouse.current.x = e.clientX + 24;
     mouse.current.y = e.clientY + 24;
-    moveX.current(mouse.current.x);
-    moveY.current(mouse.current.y);
+    if (moveX.current) moveX.current(mouse.current.x);
+    if (moveY.current) moveY.current(mouse.current.y);
   };
 
   return (
@@ -114,7 +141,7 @@ const Works = () => {
         className="relative flex flex-col font-light"
         onMouseMove={handleMouseMove}
       >
-        {projects.map((project, index) => (
+        {visibleProjects.map((project, index) => (
           <div
             key={project.id}
             id="project"
@@ -164,24 +191,30 @@ const Works = () => {
             </div>
           </div>
         ))}
-        {/* desktop Flaoting preview image */}
+
+        {/* desktop Floating preview image container - Persistent, No Re-renders */}
         <div
           ref={previewRef}
           className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0"
         >
-          {currentIndex !== null && (
-            <img
-              src={projects[currentIndex].image}
-              alt="preview"
-              className="object-cover w-full h-full"
-            />
-          )}
+          <div className="relative w-full h-full aspect-video">
+            {visibleProjects.map((project, index) => (
+              <img
+                key={project.id}
+                ref={(el) => (previewImagesRef.current[index] = el)}
+                src={project.image}
+                alt={project.name}
+                className="absolute inset-0 object-cover w-full h-full opacity-0"
+              // All hidden by default, toggled via GSAP
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Hidden Preloader */}
+      {/* Hidden Preloader: Still useful to force browser to cache them if not already visible */}
       <div className="hidden">
-        {projects.map((p) => (
+        {visibleProjects.map((p) => (
           <img key={p.id} src={p.image} alt="preload" />
         ))}
       </div>

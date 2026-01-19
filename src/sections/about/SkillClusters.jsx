@@ -70,16 +70,16 @@ const SkillClusters = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="py-32 px-6 md:px-10 bg-black text-white relative overflow-hidden">
+        <section ref={containerRef} className="py-20 md:py-32 px-6 md:px-10 bg-black text-white relative overflow-hidden">
 
             {/* Background Decoration */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C6A665]/10 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="mb-20">
+                <div className="mb-12 md:mb-20">
                     <span className="text-[#C6A665] font-mono uppercase tracking-widest text-sm mb-2 block">The Engine</span>
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter">Technology Stack</h2>
+                    <h2 className="text-4xl md:text-7xl font-bold tracking-tighter">Technology Stack</h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

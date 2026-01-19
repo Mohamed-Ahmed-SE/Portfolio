@@ -49,27 +49,65 @@ const ContactForm = () => {
     );
 
     return (
-        <section ref={containerRef} className="px-6 md:px-10 mb-40 max-w-5xl">
-            <form className="flex flex-col gap-12" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <InputField id="name" label="What's your name?" placeholder="John Doe" />
-                    <InputField id="email" type="email" label="What's your email?" placeholder="john@example.com" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <InputField id="company" label="What's the company name?" placeholder="Acme Inc." />
-                    <InputField id="budget" label="What's your budget?" placeholder="$5k - $10k" />
-                </div>
-                <InputField id="message" type="textarea" label="Tell me about your project" placeholder="Hello, I have an idea..." />
 
-                <div className="form-field pt-10">
-                    <button className="group flex items-center gap-4 text-2xl md:text-4xl uppercase tracking-tighter hover:opacity-50 transition-opacity">
-                        <span className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                            <Icon icon="lucide:arrow-up-right" className="size-8" />
-                        </span>
-                        Send Message
-                    </button>
+        <section ref={containerRef} className="px-6 md:px-10 mb-40 max-w-[1800px] mx-auto">
+            <div className="flex flex-col lg:flex-row gap-20 lg:gap-40">
+                {/* Sidebar Info */}
+                <div className="lg:w-1/3 flex flex-col gap-16 order-2 lg:order-1">
+                    <div className="flex flex-col gap-8">
+                        <div>
+                            <span className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4 block">Contact Details</span>
+                            <a href="mailto:mohamed3zma77@gmail.com" className="text-2xl md:text-3xl font-medium hover:text-gray-600 transition-colors block mb-2">
+                                mohamed3zma77@gmail.com
+                            </a>
+                            <p className="text-lg text-gray-500">+20 106 678 8307</p>
+                        </div>
+
+                        <div>
+                            <span className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4 block">Socials</span>
+                            <div className="flex flex-col gap-2">
+                                {["Twitter", "LinkedIn", "Instagram", "GitHub"].map((social) => (
+                                    <a key={social} href="#" className="text-xl font-light hover:underline decoration-1 underline-offset-4 decoration-black/30 w-fit">
+                                        {social}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div>
+                            <span className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-4 block">Location</span>
+                            <p className="text-xl">Giza, Egypt</p>
+                            <p className="text-sm text-gray-500 mt-1">
+                                {new Date().toLocaleTimeString('en-US', { timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit' })} (GMT+2)
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </form>
+
+                {/* Form */}
+                <div className="lg:w-2/3 order-1 lg:order-2">
+                    <form className="flex flex-col gap-12" onSubmit={(e) => e.preventDefault()}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <InputField id="name" label="What's your name?" placeholder="John Doe" />
+                            <InputField id="email" type="email" label="What's your email?" placeholder="john@example.com" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <InputField id="company" label="What's the company name?" placeholder="Acme Inc." />
+                            <InputField id="budget" label="What's your budget?" placeholder="$5k - $10k" />
+                        </div>
+                        <InputField id="message" type="textarea" label="Tell me about your project" placeholder="Hello, I have an idea..." />
+
+                        <div className="form-field pt-10">
+                            <button className="group flex items-center gap-6 text-2xl md:text-4xl uppercase tracking-tighter hover:opacity-50 transition-opacity w-full md:w-auto">
+                                <span className="w-20 h-20 rounded-full bg-black text-white flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                                    <Icon icon="lucide:arrow-right" className="size-8 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                                </span>
+                                <span>Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </section>
     );
 };

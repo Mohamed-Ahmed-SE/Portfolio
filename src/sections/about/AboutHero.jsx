@@ -40,17 +40,17 @@ const AboutHero = () => {
 
                 <div className="flex flex-col gap-2 mb-16">
                     <div className="overflow-hidden">
-                        <div className="hero-title-line text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9]">
+                        <div className="hero-title-line text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9]">
                             CRAFTING
                         </div>
                     </div>
                     <div className="overflow-hidden">
-                        <div className="hero-title-line text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
+                        <div className="hero-title-line text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
                             DIGITAL
                         </div>
                     </div>
                     <div className="overflow-hidden">
-                        <div className="hero-title-line text-6xl md:text-8xl lg:text-9xl font-bold text-[#C6A665] tracking-tighter leading-[0.9]">
+                        <div className="hero-title-line text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-[#C6A665] tracking-tighter leading-[0.9]">
                             REALITY
                         </div>
                     </div>

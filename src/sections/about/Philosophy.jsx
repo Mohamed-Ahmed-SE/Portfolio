@@ -46,14 +46,14 @@ const Philosophy = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="py-40 px-6 md:px-10 bg-black text-white relative flex flex-col items-center text-center">
+        <section ref={containerRef} className="py-24 md:py-40 px-6 md:px-10 bg-black text-white relative flex flex-col items-center text-center">
 
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 blur-[150px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 max-w-4xl mx-auto">
                 <Icon icon="lucide:quote" className="text-4xl md:text-6xl text-[#C6A665] mx-auto mb-10 opacity-50" />
 
-                <h2 ref={textRef} className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium leading-[1.2] tracking-tight">
+                <h2 ref={textRef} className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-sans font-medium leading-[1.2] tracking-tight">
                     <span className="word inline-block">Code</span> <span className="word inline-block">is</span> <span className="word inline-block">my</span> <span className="word inline-block text-[#C6A665]">canvas.</span> <br />
                     <span className="word inline-block">I</span> <span className="word inline-block">don't</span> <span className="word inline-block">just</span> <span className="word inline-block">build</span> <span className="word inline-block">websites;</span> <br />
                     <span className="word inline-block">I</span> <span className="word inline-block">craft</span> <span className="word inline-block italic font-serif">digital</span> <span className="word inline-block italic font-serif">experiences</span> <br />

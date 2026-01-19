@@ -51,12 +51,12 @@ const ValuesCollaboration = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className="py-32 px-6 md:px-10 bg-zinc-950 text-white relative">
+        <section ref={containerRef} className="py-20 md:py-32 px-6 md:px-10 bg-zinc-950 text-white relative">
             <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-zinc-900 to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="mb-24">
-                    <h2 className="text-4xl md:text-7xl font-light tracking-tighter mb-4">Core Principles</h2>
+                <div className="mb-16 md:mb-24">
+                    <h2 className="text-3xl sm:text-4xl md:text-7xl font-light tracking-tighter mb-4">Core Principles</h2>
                     <div className="w-full h-[1px] bg-white/10" />
                 </div>
 

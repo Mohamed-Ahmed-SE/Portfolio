@@ -40,7 +40,7 @@ const ProjectImpact = () => {
                     <h3 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none">
                         IMPACT<br />& REACH
                     </h3>
-                    <p className="max-w-md text-lg text-gray-500 leading-relaxed text-right md:text-left">
+                    <p className="max-w-md text-lg text-gray-500 leading-relaxed text-left">
                         We don't just build websites. We build digital assets that drive real-world business results and shape culture.
                     </p>
                 </div>

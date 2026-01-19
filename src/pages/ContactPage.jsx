@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Navbar from "../sections/Navbar";
 import ContactHero from "../sections/contact/ContactHero";
 import ContactForm from "../sections/contact/ContactForm";
-import SocialsLocation from "../sections/contact/SocialsLocation";
 
 const ContactPage = () => {
     useEffect(() => {
@@ -16,7 +15,7 @@ const ContactPage = () => {
                 <ContactHero />
                 <ContactForm />
             </div>
-            <SocialsLocation />
+            {/* SocialsLocation integrated into ContactForm */}
         </div>
     );
 };

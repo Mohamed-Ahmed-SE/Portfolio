@@ -3,7 +3,7 @@ import React from "react";
 const CategoryNav = ({ activeCategory, onCategoryChange, categories }) => {
     return (
         <div className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-gray-100">
-            <div className="max-w-[1800px] mx-auto px-6 md:px-10 h-20 flex items-center justify-center md:justify-between">
+            <div className="max-w-[1800px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
 
                 <span className="text-xs font-mono uppercase tracking-widest text-gray-400 hidden md:block">
                     Filter
